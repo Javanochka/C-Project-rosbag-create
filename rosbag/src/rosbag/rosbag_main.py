@@ -333,7 +333,6 @@ The following variables are available:
         for line in process.stdout:
             topic, sec, nsec = line.split(' ')
             allowed.add((topic, int(sec), int(nsec)))
-        print(allowed)
 
     try:
         inbag = Bag(inbag_filename)
