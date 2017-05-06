@@ -348,7 +348,7 @@ The following variables are available:
             verbose_pattern = expr_eval(options.verbose_pattern)
     
             for topic, raw_msg, t in inbag.read_messages(raw=True):
-                if (topic, t.secs, t.nsecs) not in allowed:
+                if options.node and (topic, t.secs, t.nsecs) not in allowed:
                     continue
                 msg_type, serialized_bytes, md5sum, pos, pytype = raw_msg
                 msg = pytype()
@@ -364,7 +364,7 @@ The following variables are available:
                 meter.step(total_bytes)
         else:
             for topic, raw_msg, t in inbag.read_messages(raw=True):
-                if (topic, t.secs, t.nsecs) not in allowed:
+                if options.node and (topic, t.secs, t.nsecs) not in allowed:
                     continue
                 msg_type, serialized_bytes, md5sum, pos, pytype = raw_msg
                 msg = pytype()
